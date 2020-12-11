@@ -2,6 +2,7 @@ package com.example.movie_paradise.src.main;
 
 import com.example.movie_paradise.src.main.interfaces.MainActivityView;
 import com.example.movie_paradise.src.main.interfaces.MainRetrofitInterface;
+import com.example.movie_paradise.src.main.models.AccountTypeResponse;
 import com.example.movie_paradise.src.main.models.DefaultResponse;
 import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
@@ -121,6 +122,35 @@ class MainService {
             @Override
             public void onFailure(Call<MovieNameResponse> call, Throwable t) {
                 mMainActivityView.validateFailure(null);
+
+            }
+        });
+    }
+
+
+    // 5. Account Type 조회
+    void getAccountType(int accountNum) {
+        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
+        mainRetrofitInterface.getAccountType(accountNum).enqueue(new Callback<AccountTypeResponse>() {
+            @Override
+            public void onResponse(Call<AccountTypeResponse> call, Response<AccountTypeResponse> response) {
+                System.out.println("11");
+                final AccountTypeResponse accountTypeResponse = response.body();
+                if (accountTypeResponse == null) {
+                    System.out.println("22");
+
+                    mMainActivityView.validateFailure(null);
+                    return;
+                }
+                mMainActivityView.getAccountTypeSuccess(accountTypeResponse);
+                System.out.println("33");
+
+
+            }
+            @Override
+            public void onFailure(Call<AccountTypeResponse> call, Throwable t) {
+                mMainActivityView.validateFailure(null);
+                System.out.println("44");
 
             }
         });

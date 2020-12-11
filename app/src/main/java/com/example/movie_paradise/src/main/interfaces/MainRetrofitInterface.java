@@ -1,5 +1,6 @@
 package com.example.movie_paradise.src.main.interfaces;
 
+import com.example.movie_paradise.src.main.models.AccountTypeResponse;
 import com.example.movie_paradise.src.main.models.DefaultResponse;
 import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
@@ -32,6 +33,12 @@ public interface MainRetrofitInterface {
     // 4. 무비큐 조회
     @GET("/movie_queue/{account_num}")
     Call<MovieNameResponse> getMovieQueue(@Path("account_num") int accountNum);
+
+    // 5. Account Type 조회
+    @GET("/account_type/{account_num}")
+    Call<AccountTypeResponse> getAccountType(@Path("account_num") int accountNum);
+
+
 
 
 

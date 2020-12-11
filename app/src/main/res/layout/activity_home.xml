@@ -94,7 +94,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ll_mypage_log_out"
+            android:id="@+id/ll_home_account_type"
+            android:onClick="customOnClick"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="65dp"
@@ -104,7 +105,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="로그아웃"
+                android:text="my account type"
                 android:textColor="@color/dark_grey"
                 android:textSize="20sp"/>
         </LinearLayout>

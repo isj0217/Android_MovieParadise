@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import com.example.movie_paradise.R;
 import com.example.movie_paradise.src.BaseActivity;
 import com.example.movie_paradise.src.main.interfaces.MainActivityView;
+import com.example.movie_paradise.src.main.models.AccountTypeResponse;
 import com.example.movie_paradise.src.main.models.DefaultResponse;
 import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
@@ -87,6 +88,11 @@ public class HomeActivity extends BaseActivity implements MainActivityView {
 
     }
 
+    @Override
+    public void getAccountTypeSuccess(AccountTypeResponse accountTypeResponse) {
+
+    }
+
     public void customOnClick(View view) {
         switch (view.getId()) {
             case R.id.ll_home_currently_held:
@@ -95,6 +101,10 @@ public class HomeActivity extends BaseActivity implements MainActivityView {
                 break;
             case R.id.ll_home_movie_queue:
                 intent = new Intent(HomeActivity.this, MovieQueueActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.ll_home_account_type:
+                intent = new Intent(HomeActivity.this, AccountTypeActivity.class);
                 startActivity(intent);
                 break;
             default:

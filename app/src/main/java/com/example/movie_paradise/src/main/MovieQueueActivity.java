@@ -15,6 +15,7 @@ import com.example.movie_paradise.src.BaseActivity;
 import com.example.movie_paradise.src.main.adapters.MovieAdapter;
 import com.example.movie_paradise.src.main.interfaces.MainActivityView;
 import com.example.movie_paradise.src.main.items.MovieItem;
+import com.example.movie_paradise.src.main.models.AccountTypeResponse;
 import com.example.movie_paradise.src.main.models.DefaultResponse;
 import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
@@ -138,6 +139,11 @@ public class MovieQueueActivity extends BaseActivity implements MainActivityView
                 }
                 break;
         }
+    }
+
+    @Override
+    public void getAccountTypeSuccess(AccountTypeResponse accountTypeResponse) {
+
     }
 
     public void saveIdAndAccountNum(String id, int account_num) {

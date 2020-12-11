@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,58 +22,41 @@ import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import static android.view.View.GONE;
 
-public class CurrentlyHeldActivity extends BaseActivity implements MainActivityView {
+public class AccountTypeActivity extends BaseActivity implements MainActivityView {
 
     private String id;
     private int account_num;
 
     private Intent intent;
 
-    private ArrayList<MovieItem> m_movie_item_list;
-    private MovieAdapter movie_adapter;
-    private RecyclerView rv_currently_held;
-    private LinearLayoutManager linear_layout_manager;
-
-    private LinearLayout ll_currently_held_empty;
+    private TextView tv_account_type_account_type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_currently_held);
+        setContentView(R.layout.activity_account_type);
 
         bindViews();
-        linear_layout_manager = new LinearLayoutManager(getApplicationContext());
-        rv_currently_held.setLayoutManager(linear_layout_manager);
-
-        m_movie_item_list = new ArrayList<>();
-        movie_adapter = new MovieAdapter(m_movie_item_list);
-        rv_currently_held.setAdapter(movie_adapter);
 
 
         loadIdAndAccountNum();
 
-        System.out.println("acc num : " + account_num);
-        tryGetCurrentlyHeld(account_num);
+        tryGetAccountType(account_num);
     }
 
-    private void tryGetCurrentlyHeld(int accountNum) {
+    private void tryGetAccountType(int accountNum) {
         showProgressDialog();
-//        HashMap<String, Object> params = new HashMap<>();
-//        params.put("id", id);
 
         final MainService mainService = new MainService(this);
-        mainService.getCurrentlyHeld(accountNum);
+        mainService.getAccountType(accountNum);
     }
 
 
     public void bindViews() {
-        ll_currently_held_empty = findViewById(R.id.ll_currently_held_empty);
-
-        rv_currently_held = findViewById(R.id.rv_currently_held);
+        tv_account_type_account_type = findViewById(R.id.tv_account_type_account_type);
     }
 
     public void loadIdAndAccountNum() {
@@ -108,36 +92,7 @@ public class CurrentlyHeldActivity extends BaseActivity implements MainActivityV
 
     @Override
     public void getCurrentlyHeldSuccess(MovieNameResponse movieNameResponse) {
-        hideProgressDialog();
 
-        showCustomToast(movieNameResponse.getMessage());
-
-        switch (movieNameResponse.getCode()) {
-
-            case 100:
-                /**
-                 * MovieItem 형식의 ArrayList에 모두 넣어두고 어댑터를 이용해서 하나하나 레이아웃에 갖다 붙이자!!
-                 * */
-
-                int num_of_movies = movieNameResponse.getMovieNameResults().size();
-
-
-                if (num_of_movies > 0) {
-
-                    ll_currently_held_empty.setVisibility(GONE);
-
-                    for (int i = 0; i < num_of_movies; i++) {
-                        MovieItem movieItem = new MovieItem();
-
-                        System.out.println(movieNameResponse.getMovieNameResults().get(i).getMovieName());
-
-                        movieItem.setMovieName(movieNameResponse.getMovieNameResults().get(i).getMovieName());
-                        m_movie_item_list.add(movieItem);
-                    }
-                    movie_adapter.notifyDataSetChanged();
-                }
-                break;
-        }
     }
 
     @Override
@@ -147,7 +102,14 @@ public class CurrentlyHeldActivity extends BaseActivity implements MainActivityV
 
     @Override
     public void getAccountTypeSuccess(AccountTypeResponse accountTypeResponse) {
+        hideProgressDialog();
 
+        switch (accountTypeResponse.getCode()){
+            case 100:
+                showCustomToast(accountTypeResponse.getMessage());
+                tv_account_type_account_type.setText(accountTypeResponse.getAccountTypeResult().getAccountType());
+                break;
+        }
     }
 
     public void saveIdAndAccountNum(String id, int account_num) {
@@ -161,7 +123,7 @@ public class CurrentlyHeldActivity extends BaseActivity implements MainActivityV
         public void customOnClick(View view) {
         switch (view.getId()) {
             case R.id.ll_home_currently_held:
-                intent = new Intent(CurrentlyHeldActivity.this, CurrentlyHeldActivity.class);
+                intent = new Intent(AccountTypeActivity.this, AccountTypeActivity.class);
                 startActivity(intent);
 
                 break;

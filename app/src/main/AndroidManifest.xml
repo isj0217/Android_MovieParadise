@@ -30,6 +30,7 @@
         <activity android:name=".src.main.HomeActivity" />
         <activity android:name=".src.main.CurrentlyHeldActivity" />
         <activity android:name=".src.main.MovieQueueActivity" />
+        <activity android:name=".src.main.AccountTypeActivity" />
     </application>
 
 </manifest>
