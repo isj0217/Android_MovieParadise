@@ -15,4 +15,6 @@ public interface MainActivityView {
     void signInSuccess(SignInResponse signInResponse);
 
     void getCurrentlyHeldSuccess(MovieNameResponse movieNameResponse);
+
+    void getMovieQueueSuccess(MovieNameResponse movieNameResponse);
 }

@@ -101,6 +101,32 @@ class MainService {
     }
 
 
+    // 4. 무비큐 조회
+    void getMovieQueue(int accountNum) {
+        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
+        mainRetrofitInterface.getMovieQueue(accountNum).enqueue(new Callback<MovieNameResponse>() {
+            @Override
+            public void onResponse(Call<MovieNameResponse> call, Response<MovieNameResponse> response) {
+
+                final MovieNameResponse movieNameResponse = response.body();
+                if (movieNameResponse == null) {
+
+                    mMainActivityView.validateFailure(null);
+                    return;
+                }
+                mMainActivityView.getMovieQueueSuccess(movieNameResponse);
+
+
+            }
+            @Override
+            public void onFailure(Call<MovieNameResponse> call, Throwable t) {
+                mMainActivityView.validateFailure(null);
+
+            }
+        });
+    }
+
+
 
     // 이 아래는 테스트
     void getTest() {

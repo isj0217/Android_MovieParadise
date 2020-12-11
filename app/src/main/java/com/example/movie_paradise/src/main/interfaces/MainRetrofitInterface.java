@@ -29,6 +29,10 @@ public interface MainRetrofitInterface {
     @GET("/currently_held/{account_num}")
     Call<MovieNameResponse> getCurrentlyHeld(@Path("account_num") int accountNum);
 
+    // 4. 무비큐 조회
+    @GET("/movie_queue/{account_num}")
+    Call<MovieNameResponse> getMovieQueue(@Path("account_num") int accountNum);
+
 
 
 

@@ -78,6 +78,7 @@
 
         <LinearLayout
             android:id="@+id/ll_home_movie_queue"
+            android:onClick="customOnClick"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="65dp"

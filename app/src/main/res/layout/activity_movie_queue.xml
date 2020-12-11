@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/ll_currently_held_top_bar"
+        android:id="@+id/ll_movie_queue_top_bar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center_vertical"
@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Movies that I currently held"
+            android:text="My Movie Wish List (Movie Queue)"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -35,7 +35,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_currently_held_empty"
+        android:id="@+id/ll_movie_queue_empty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
@@ -51,7 +51,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="I don't hold any Movie for now"
+            android:text="My Movie Queue is empty"
             android:textColor="@color/grey"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -62,7 +62,7 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_currently_held"
+            android:id="@+id/rv_movie_queue"
             android:layout_width="match_parent"
             android:layout_height="0dp">
 

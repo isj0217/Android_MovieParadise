@@ -82,15 +82,25 @@ public class HomeActivity extends BaseActivity implements MainActivityView {
 
     }
 
+    @Override
+    public void getMovieQueueSuccess(MovieNameResponse movieNameResponse) {
+
+    }
+
     public void customOnClick(View view) {
         switch (view.getId()) {
             case R.id.ll_home_currently_held:
                 intent = new Intent(HomeActivity.this, CurrentlyHeldActivity.class);
                 startActivity(intent);
-
+                break;
+            case R.id.ll_home_movie_queue:
+                intent = new Intent(HomeActivity.this, MovieQueueActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
         }
     }
+
+
 }

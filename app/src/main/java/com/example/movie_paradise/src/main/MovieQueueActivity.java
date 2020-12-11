@@ -20,11 +20,10 @@ import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import static android.view.View.GONE;
 
-public class CurrentlyHeldActivity extends BaseActivity implements MainActivityView {
+public class MovieQueueActivity extends BaseActivity implements MainActivityView {
 
     private String id;
     private int account_num;
@@ -33,45 +32,42 @@ public class CurrentlyHeldActivity extends BaseActivity implements MainActivityV
 
     private ArrayList<MovieItem> m_movie_item_list;
     private MovieAdapter movie_adapter;
-    private RecyclerView rv_currently_held;
+    private RecyclerView rv_movie_queue;
     private LinearLayoutManager linear_layout_manager;
 
-    private LinearLayout ll_currently_held_empty;
+    private LinearLayout ll_movie_queue_empty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_currently_held);
+        setContentView(R.layout.activity_movie_queue);
 
         bindViews();
         linear_layout_manager = new LinearLayoutManager(getApplicationContext());
-        rv_currently_held.setLayoutManager(linear_layout_manager);
+        rv_movie_queue.setLayoutManager(linear_layout_manager);
 
         m_movie_item_list = new ArrayList<>();
         movie_adapter = new MovieAdapter(m_movie_item_list);
-        rv_currently_held.setAdapter(movie_adapter);
+        rv_movie_queue.setAdapter(movie_adapter);
 
 
         loadIdAndAccountNum();
 
-        System.out.println("acc num : " + account_num);
-        tryGetCurrentlyHeld(account_num);
+        tryGetMovieQueue(account_num);
     }
 
-    private void tryGetCurrentlyHeld(int accountNum) {
+    private void tryGetMovieQueue(int accountNum) {
         showProgressDialog();
-//        HashMap<String, Object> params = new HashMap<>();
-//        params.put("id", id);
 
         final MainService mainService = new MainService(this);
-        mainService.getCurrentlyHeld(accountNum);
+        mainService.getMovieQueue(accountNum);
     }
 
 
     public void bindViews() {
-        ll_currently_held_empty = findViewById(R.id.ll_currently_held_empty);
+        ll_movie_queue_empty = findViewById(R.id.ll_movie_queue_empty);
 
-        rv_currently_held = findViewById(R.id.rv_currently_held);
+        rv_movie_queue = findViewById(R.id.rv_movie_queue);
     }
 
     public void loadIdAndAccountNum() {
@@ -107,6 +103,11 @@ public class CurrentlyHeldActivity extends BaseActivity implements MainActivityV
 
     @Override
     public void getCurrentlyHeldSuccess(MovieNameResponse movieNameResponse) {
+
+    }
+
+    @Override
+    public void getMovieQueueSuccess(MovieNameResponse movieNameResponse) {
         hideProgressDialog();
 
         showCustomToast(movieNameResponse.getMessage());
@@ -123,7 +124,7 @@ public class CurrentlyHeldActivity extends BaseActivity implements MainActivityV
 
                 if (num_of_movies > 0) {
 
-                    ll_currently_held_empty.setVisibility(GONE);
+                    ll_movie_queue_empty.setVisibility(GONE);
 
                     for (int i = 0; i < num_of_movies; i++) {
                         MovieItem movieItem = new MovieItem();
@@ -139,11 +140,6 @@ public class CurrentlyHeldActivity extends BaseActivity implements MainActivityV
         }
     }
 
-    @Override
-    public void getMovieQueueSuccess(MovieNameResponse movieNameResponse) {
-
-    }
-
     public void saveIdAndAccountNum(String id, int account_num) {
         SharedPreferences sharedPreferences = getSharedPreferences("id_and_account_num", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -155,7 +151,7 @@ public class CurrentlyHeldActivity extends BaseActivity implements MainActivityV
         public void customOnClick(View view) {
         switch (view.getId()) {
             case R.id.ll_home_currently_held:
-                intent = new Intent(CurrentlyHeldActivity.this, CurrentlyHeldActivity.class);
+                intent = new Intent(MovieQueueActivity.this, MovieQueueActivity.class);
                 startActivity(intent);
 
                 break;

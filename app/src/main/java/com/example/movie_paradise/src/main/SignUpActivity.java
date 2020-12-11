@@ -146,4 +146,9 @@ public class SignUpActivity extends BaseActivity implements MainActivityView {
     public void getCurrentlyHeldSuccess(MovieNameResponse movieNameResponse) {
 
     }
+
+    @Override
+    public void getMovieQueueSuccess(MovieNameResponse movieNameResponse) {
+
+    }
 }

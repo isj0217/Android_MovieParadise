@@ -29,6 +29,7 @@
         <activity android:name=".src.main.SignUpActivity" />
         <activity android:name=".src.main.HomeActivity" />
         <activity android:name=".src.main.CurrentlyHeldActivity" />
+        <activity android:name=".src.main.MovieQueueActivity" />
     </application>
 
 </manifest>
