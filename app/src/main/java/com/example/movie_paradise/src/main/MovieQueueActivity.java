@@ -146,6 +146,11 @@ public class MovieQueueActivity extends BaseActivity implements MainActivityView
 
     }
 
+    @Override
+    public void getAvailableMoviesSuccess(MovieNameResponse movieNameResponse) {
+
+    }
+
     public void saveIdAndAccountNum(String id, int account_num) {
         SharedPreferences sharedPreferences = getSharedPreferences("id_and_account_num", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

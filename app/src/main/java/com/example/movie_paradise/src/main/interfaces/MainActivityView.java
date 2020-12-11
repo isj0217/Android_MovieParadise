@@ -20,4 +20,6 @@ public interface MainActivityView {
     void getMovieQueueSuccess(MovieNameResponse movieNameResponse);
 
     void getAccountTypeSuccess(AccountTypeResponse accountTypeResponse);
+
+    void getAvailableMoviesSuccess(MovieNameResponse movieNameResponse);
 }

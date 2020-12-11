@@ -157,4 +157,9 @@ public class SignUpActivity extends BaseActivity implements MainActivityView {
     public void getAccountTypeSuccess(AccountTypeResponse accountTypeResponse) {
 
     }
+
+    @Override
+    public void getAvailableMoviesSuccess(MovieNameResponse movieNameResponse) {
+
+    }
 }

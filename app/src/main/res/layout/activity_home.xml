@@ -46,6 +46,7 @@
 
         <LinearLayout
             android:id="@+id/ll_home_available"
+            android:onClick="customOnClick"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:gravity="center_vertical"

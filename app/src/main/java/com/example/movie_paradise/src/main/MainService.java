@@ -157,6 +157,32 @@ class MainService {
     }
 
 
+    // 6. 장르별 대여 가능한 영화 조회
+    void getAvailableMovies(String genre) {
+        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
+        mainRetrofitInterface.getAvailableMovies(genre).enqueue(new Callback<MovieNameResponse>() {
+            @Override
+            public void onResponse(Call<MovieNameResponse> call, Response<MovieNameResponse> response) {
+                final MovieNameResponse movieNameResponse = response.body();
+                if (movieNameResponse == null) {
+
+                    mMainActivityView.validateFailure(null);
+                    return;
+                }
+                mMainActivityView.getAvailableMoviesSuccess(movieNameResponse);
+
+
+            }
+            @Override
+            public void onFailure(Call<MovieNameResponse> call, Throwable t) {
+                mMainActivityView.validateFailure(null);
+
+            }
+        });
+    }
+
+
+
 
     // 이 아래는 테스트
     void getTest() {

@@ -38,6 +38,10 @@ public interface MainRetrofitInterface {
     @GET("/account_type/{account_num}")
     Call<AccountTypeResponse> getAccountType(@Path("account_num") int accountNum);
 
+    // 6. 장르별 대여 가능한 영화 조회
+    @GET("/available")
+    Call<MovieNameResponse> getAvailableMovies(@Query("genre") String genre);
+
 
 
 

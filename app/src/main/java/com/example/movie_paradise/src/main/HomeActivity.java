@@ -93,6 +93,11 @@ public class HomeActivity extends BaseActivity implements MainActivityView {
 
     }
 
+    @Override
+    public void getAvailableMoviesSuccess(MovieNameResponse movieNameResponse) {
+
+    }
+
     public void customOnClick(View view) {
         switch (view.getId()) {
             case R.id.ll_home_currently_held:
@@ -105,6 +110,10 @@ public class HomeActivity extends BaseActivity implements MainActivityView {
                 break;
             case R.id.ll_home_account_type:
                 intent = new Intent(HomeActivity.this, AccountTypeActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.ll_home_available:
+                intent = new Intent(HomeActivity.this, AvailableActivity.class);
                 startActivity(intent);
                 break;
             default:
