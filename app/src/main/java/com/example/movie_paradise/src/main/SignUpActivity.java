@@ -12,6 +12,7 @@ import com.example.movie_paradise.R;
 import com.example.movie_paradise.src.BaseActivity;
 import com.example.movie_paradise.src.main.interfaces.MainActivityView;
 import com.example.movie_paradise.src.main.models.DefaultResponse;
+import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
 
 import java.util.HashMap;
@@ -132,11 +133,17 @@ public class SignUpActivity extends BaseActivity implements MainActivityView {
 
             default:
                 showCustomToast(defaultResponse.getMessage());
+                break;
         }
     }
 
     @Override
     public void signInSuccess(SignInResponse signInResponse) {
+
+    }
+
+    @Override
+    public void getCurrentlyHeldSuccess(MovieNameResponse movieNameResponse) {
 
     }
 }

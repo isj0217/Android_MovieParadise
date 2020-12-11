@@ -13,11 +13,14 @@ import com.example.movie_paradise.R;
 import com.example.movie_paradise.src.BaseActivity;
 import com.example.movie_paradise.src.main.interfaces.MainActivityView;
 import com.example.movie_paradise.src.main.models.DefaultResponse;
+import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
 
 import java.util.HashMap;
 
 public class HomeActivity extends BaseActivity implements MainActivityView {
+
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,13 +77,20 @@ public class HomeActivity extends BaseActivity implements MainActivityView {
         editor.apply();
     }
 
-    //    public void customOnClick(View view) {
-//        switch (view.getId()) {
-//            case R.id.main_btn_hello_world:
-//                tryGetTest();
-//                break;
-//            default:
-//                break;
-//        }
-//    }
+    @Override
+    public void getCurrentlyHeldSuccess(MovieNameResponse movieNameResponse) {
+
+    }
+
+    public void customOnClick(View view) {
+        switch (view.getId()) {
+            case R.id.ll_home_currently_held:
+                intent = new Intent(HomeActivity.this, CurrentlyHeldActivity.class);
+                startActivity(intent);
+
+                break;
+            default:
+                break;
+        }
+    }
 }

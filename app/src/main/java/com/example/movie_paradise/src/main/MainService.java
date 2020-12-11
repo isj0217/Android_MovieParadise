@@ -3,6 +3,7 @@ package com.example.movie_paradise.src.main;
 import com.example.movie_paradise.src.main.interfaces.MainActivityView;
 import com.example.movie_paradise.src.main.interfaces.MainRetrofitInterface;
 import com.example.movie_paradise.src.main.models.DefaultResponse;
+import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
 
 import java.util.HashMap;
@@ -68,6 +69,33 @@ class MainService {
             @Override
             public void onFailure(Call<SignInResponse> call, Throwable t) {
                 mMainActivityView.validateFailure(null);
+            }
+        });
+    }
+
+    // 3. 현재 빌린 상태인 영화 조회
+    void getCurrentlyHeld(int accountNum) {
+        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
+        mainRetrofitInterface.getCurrentlyHeld(accountNum).enqueue(new Callback<MovieNameResponse>() {
+            @Override
+            public void onResponse(Call<MovieNameResponse> call, Response<MovieNameResponse> response) {
+                System.out.println("111");
+                final MovieNameResponse movieNameResponse = response.body();
+                if (movieNameResponse == null) {
+                    System.out.println("222");
+
+                    mMainActivityView.validateFailure(null);
+                    return;
+                }
+                mMainActivityView.getCurrentlyHeldSuccess(movieNameResponse);
+                System.out.println("333");
+
+            }
+            @Override
+            public void onFailure(Call<MovieNameResponse> call, Throwable t) {
+                mMainActivityView.validateFailure(null);
+                System.out.println("444");
+
             }
         });
     }

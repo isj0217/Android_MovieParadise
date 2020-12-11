@@ -1,6 +1,7 @@
 package com.example.movie_paradise.src.main.interfaces;
 
 import com.example.movie_paradise.src.main.models.DefaultResponse;
+import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
 
 public interface MainActivityView {
@@ -12,4 +13,6 @@ public interface MainActivityView {
     void signUpSuccess(DefaultResponse defaultResponse);
 
     void signInSuccess(SignInResponse signInResponse);
+
+    void getCurrentlyHeldSuccess(MovieNameResponse movieNameResponse);
 }

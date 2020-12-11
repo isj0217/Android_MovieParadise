@@ -13,6 +13,7 @@ import com.example.movie_paradise.R;
 import com.example.movie_paradise.src.BaseActivity;
 import com.example.movie_paradise.src.main.interfaces.MainActivityView;
 import com.example.movie_paradise.src.main.models.DefaultResponse;
+import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
 
 import java.util.HashMap;
@@ -104,7 +105,13 @@ public class SignInActivity extends BaseActivity implements MainActivityView {
 
             default:
                 showCustomToast(signInResponse.getMessage());
+                break;
         }
+    }
+
+    @Override
+    public void getCurrentlyHeldSuccess(MovieNameResponse movieNameResponse) {
+
     }
 
     public void saveIdAndAccountNum(String id, int account_num) {
