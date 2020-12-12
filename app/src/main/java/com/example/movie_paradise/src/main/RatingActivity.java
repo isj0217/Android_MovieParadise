@@ -25,6 +25,7 @@ import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static android.view.View.GONE;
 
@@ -65,7 +66,7 @@ public class RatingActivity extends BaseActivity implements MainActivityView {
                 if (et_rating_score.getText().toString().length() == 0) {
                     showCustomToast("please fill in the form");
                 } else {
-//                    tryPostRating(id, )
+                    tryPostRating(id, movieID, Float.parseFloat(et_rating_score.getText().toString()));
                 }
             }
         });
@@ -82,6 +83,18 @@ public class RatingActivity extends BaseActivity implements MainActivityView {
 
         final MainService mainService = new MainService(this);
         mainService.getMovieIdByMovieName(movie_name);
+    }
+
+    private void tryPostRating(String customerID, int movieID, float rating) {
+        showProgressDialog();
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("customerID", customerID);
+        params.put("movieID", movieID);
+        params.put("rating", rating);
+
+
+        final MainService mainService = new MainService(this, params);
+        mainService.postRating();
     }
 
 
@@ -161,6 +174,13 @@ public class RatingActivity extends BaseActivity implements MainActivityView {
         movieID = movieIdResponse.getMovieIdResult().getMovieID();
 
         System.out.println("받아온 movieID = " + movieID);
+    }
+
+    @Override
+    public void postRatingSuccess(DefaultResponse defaultResponse) {
+        hideProgressDialog();
+        showCustomToast(defaultResponse.getMessage());
+
     }
 
     public void saveIdAndAccountNum(String id, int account_num) {

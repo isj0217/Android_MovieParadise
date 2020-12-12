@@ -232,6 +232,32 @@ class MainService {
         });
     }
 
+    // 10. 영화 평점 매기기
+    void postRating() {
+        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
+        mainRetrofitInterface.postRating(mParams).enqueue(new Callback<DefaultResponse>() {
+            @Override
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+
+                final DefaultResponse defaultResponse = response.body();
+                if (defaultResponse == null) {
+
+                    mMainActivityView.validateFailure(null);
+                    return;
+                }
+                mMainActivityView.postRatingSuccess(defaultResponse);
+
+            }
+            @Override
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+                mMainActivityView.validateFailure(null);
+            }
+        });
+    }
+
+
+
+
 
 
     // 추가 1. 내가 본 영화 검색

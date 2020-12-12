@@ -31,4 +31,6 @@ public interface MainActivityView {
     void getWatchedMoviesSuccess(MovieNameResponse movieNameResponse);
 
     void getMovieIdByMovieNameSuccess(MovieIdResponse movieIdResponse);
+
+    void postRatingSuccess(DefaultResponse defaultResponse);
 }

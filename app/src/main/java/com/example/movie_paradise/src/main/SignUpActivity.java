@@ -183,4 +183,9 @@ public class SignUpActivity extends BaseActivity implements MainActivityView {
     public void getMovieIdByMovieNameSuccess(MovieIdResponse movieIdResponse) {
 
     }
+
+    @Override
+    public void postRatingSuccess(DefaultResponse defaultResponse) {
+
+    }
 }

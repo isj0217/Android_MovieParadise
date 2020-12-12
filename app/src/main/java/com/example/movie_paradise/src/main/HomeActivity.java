@@ -120,6 +120,11 @@ public class HomeActivity extends BaseActivity implements MainActivityView {
 
     }
 
+    @Override
+    public void postRatingSuccess(DefaultResponse defaultResponse) {
+
+    }
+
     public void customOnClick(View view) {
         switch (view.getId()) {
             case R.id.ll_home_currently_held:
