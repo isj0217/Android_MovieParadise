@@ -86,7 +86,7 @@ public class SignUpActivity extends BaseActivity implements MainActivityView {
         et_sign_up_telephone = findViewById(R.id.et_sign_up_telephone);
         et_sign_up_email = findViewById(R.id.et_sign_up_email);
         et_sign_up_credit_card = findViewById(R.id.et_sign_up_credit_card);
-        et_sign_up_account_type = findViewById(R.id.et_sign_up_id);
+        et_sign_up_account_type = findViewById(R.id.et_sign_up_account_type);
 
         btn_sign_up_sign_up = findViewById(R.id.btn_sign_up_sign_up);
     }
