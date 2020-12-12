@@ -232,7 +232,7 @@ class MainService {
         });
     }
 
-    // 10. 영화 평점 매기기
+    // 9. 영화 평점 매기기
     void postRating() {
         final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
         mainRetrofitInterface.postRating(mParams).enqueue(new Callback<DefaultResponse>() {

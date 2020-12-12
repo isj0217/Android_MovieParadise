@@ -51,11 +51,9 @@ public interface MainRetrofitInterface {
     @GET("/search_from_actor")
     Call<MovieNameResponse> searchMovieByActorName(@Query("query") String actor_name);
 
-    // 10. 영화 평점 매기기
+    // 9. 영화 평점 매기기
     @POST("/rating")
     Call<DefaultResponse> postRating(@Body HashMap<String, Object> params);
-
-
 
 
 
@@ -75,7 +73,7 @@ public interface MainRetrofitInterface {
 
 
 
-
+    // 이 아래는 테스트
 
 
     //    @GET("/test")
