@@ -26,4 +26,6 @@ public interface MainActivityView {
     void searchMovieByMovieTitleSuccess(MovieNameResponse movieNameResponse);
 
     void searchMovieByActorNameSuccess(MovieNameResponse movieNameResponse);
+
+    void getWatchedMoviesSuccess(MovieNameResponse movieNameResponse);
 }

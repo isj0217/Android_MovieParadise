@@ -33,6 +33,7 @@
         <activity android:name=".src.main.AccountTypeActivity" />
         <activity android:name=".src.main.AvailableActivity" />
         <activity android:name=".src.main.SearchActivity" />
+        <activity android:name=".src.main.WatchedActivity" />
     </application>
 
 </manifest>

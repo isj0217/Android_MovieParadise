@@ -89,7 +89,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="check out my movie wish list"
+                android:text="Check out my movie wish list"
                 android:textColor="@color/dark_grey"
                 android:textSize="20sp"/>
         </LinearLayout>
@@ -106,7 +106,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="my account type"
+                android:text="My account type"
                 android:textColor="@color/dark_grey"
                 android:textSize="20sp"/>
         </LinearLayout>
@@ -124,6 +124,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="search movies"
+                android:textColor="@color/dark_grey"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_home_rate_movies_I_watched"
+            android:onClick="customOnClick"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/btn_white_round_corner_light_grey">
+            <TextView
+                android:layout_marginStart="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rate movies I watched"
+                android:textColor="@color/dark_grey"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_home_log_out"
+            android:onClick="customOnClick"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/btn_white_round_corner_light_grey">
+            <TextView
+                android:layout_marginStart="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="log out"
                 android:textColor="@color/dark_grey"
                 android:textSize="20sp"/>
         </LinearLayout>

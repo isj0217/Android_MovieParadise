@@ -109,6 +109,11 @@ public class HomeActivity extends BaseActivity implements MainActivityView {
 
     }
 
+    @Override
+    public void getWatchedMoviesSuccess(MovieNameResponse movieNameResponse) {
+
+    }
+
     public void customOnClick(View view) {
         switch (view.getId()) {
             case R.id.ll_home_currently_held:
@@ -130,6 +135,15 @@ public class HomeActivity extends BaseActivity implements MainActivityView {
             case R.id.ll_home_search_movies:
                 intent = new Intent(HomeActivity.this, SearchActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.ll_home_rate_movies_I_watched:
+                intent = new Intent(HomeActivity.this, WatchedActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.ll_home_log_out:
+                intent = new Intent(HomeActivity.this, SignInActivity.class);
+                startActivity(intent);
+                finish();
                 break;
             default:
                 break;

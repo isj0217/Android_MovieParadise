@@ -53,6 +53,14 @@ public interface MainRetrofitInterface {
 
 
 
+    // 추가 1. 내가 본 영화 조회
+    @GET("/watched/{account_num}")
+    Call<MovieNameResponse> getWatchedMovies(@Path("account_num") int accountNum);
+
+
+
+
+
 
 
 

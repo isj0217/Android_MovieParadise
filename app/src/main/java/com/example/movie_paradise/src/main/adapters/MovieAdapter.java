@@ -47,12 +47,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.CustomViewHo
 
         holder.tv_item_movie_title.setText(movie_item_list.get(position).getMovieName());
 
-//        if(department_post_item_list.get(position).getPhoto_status() == 0){
-//            holder.iv_item_post_photo_status.setVisibility(View.INVISIBLE);
-//        } else{
-//            holder.iv_item_post_photo_status.setVisibility(View.VISIBLE);
-//        }
-
         holder.itemView.setTag(position);
 
         /**

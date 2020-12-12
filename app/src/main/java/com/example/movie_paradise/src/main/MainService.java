@@ -233,6 +233,35 @@ class MainService {
 
 
 
+    // 추가 1. 내가 본 영화 검색
+    void getWatchedMovies(int accountNum) {
+        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
+        mainRetrofitInterface.getWatchedMovies(accountNum).enqueue(new Callback<MovieNameResponse>() {
+            @Override
+            public void onResponse(Call<MovieNameResponse> call, Response<MovieNameResponse> response) {
+
+                final MovieNameResponse movieNameResponse = response.body();
+                if (movieNameResponse == null) {
+
+                    mMainActivityView.validateFailure(null);
+                    return;
+                }
+                mMainActivityView.getWatchedMoviesSuccess(movieNameResponse);
+
+
+            }
+            @Override
+            public void onFailure(Call<MovieNameResponse> call, Throwable t) {
+                mMainActivityView.validateFailure(null);
+
+            }
+        });
+    }
+
+
+
+
+
 
 
     // 이 아래는 테스트
