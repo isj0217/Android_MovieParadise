@@ -2,6 +2,7 @@ package com.example.movie_paradise.src.main.interfaces;
 
 import com.example.movie_paradise.src.main.models.AccountTypeResponse;
 import com.example.movie_paradise.src.main.models.DefaultResponse;
+import com.example.movie_paradise.src.main.models.MovieIdResponse;
 import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
 
@@ -28,4 +29,6 @@ public interface MainActivityView {
     void searchMovieByActorNameSuccess(MovieNameResponse movieNameResponse);
 
     void getWatchedMoviesSuccess(MovieNameResponse movieNameResponse);
+
+    void getMovieIdByMovieNameSuccess(MovieIdResponse movieIdResponse);
 }

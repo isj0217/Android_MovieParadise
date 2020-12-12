@@ -4,6 +4,7 @@ import com.example.movie_paradise.src.main.interfaces.MainActivityView;
 import com.example.movie_paradise.src.main.interfaces.MainRetrofitInterface;
 import com.example.movie_paradise.src.main.models.AccountTypeResponse;
 import com.example.movie_paradise.src.main.models.DefaultResponse;
+import com.example.movie_paradise.src.main.models.MovieIdResponse;
 import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
 
@@ -259,6 +260,31 @@ class MainService {
     }
 
 
+
+    // 추가 2. 영화 이름으로 movieID 검색
+    void getMovieIdByMovieName(String movie_name) {
+        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
+        mainRetrofitInterface.getMovieIdByMovieName(movie_name).enqueue(new Callback<MovieIdResponse>() {
+            @Override
+            public void onResponse(Call<MovieIdResponse> call, Response<MovieIdResponse> response) {
+
+                final MovieIdResponse movieIdResponse = response.body();
+                if (movieIdResponse == null) {
+
+                    mMainActivityView.validateFailure(null);
+                    return;
+                }
+                mMainActivityView.getMovieIdByMovieNameSuccess(movieIdResponse);
+
+
+            }
+            @Override
+            public void onFailure(Call<MovieIdResponse> call, Throwable t) {
+                mMainActivityView.validateFailure(null);
+
+            }
+        });
+    }
 
 
 

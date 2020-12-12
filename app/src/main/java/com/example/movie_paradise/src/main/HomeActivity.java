@@ -13,6 +13,7 @@ import com.example.movie_paradise.src.BaseActivity;
 import com.example.movie_paradise.src.main.interfaces.MainActivityView;
 import com.example.movie_paradise.src.main.models.AccountTypeResponse;
 import com.example.movie_paradise.src.main.models.DefaultResponse;
+import com.example.movie_paradise.src.main.models.MovieIdResponse;
 import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
 
@@ -111,6 +112,11 @@ public class HomeActivity extends BaseActivity implements MainActivityView {
 
     @Override
     public void getWatchedMoviesSuccess(MovieNameResponse movieNameResponse) {
+
+    }
+
+    @Override
+    public void getMovieIdByMovieNameSuccess(MovieIdResponse movieIdResponse) {
 
     }
 

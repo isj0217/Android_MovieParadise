@@ -14,10 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.movie_paradise.R;
 import com.example.movie_paradise.src.BaseActivity;
 import com.example.movie_paradise.src.main.adapters.MovieAdapter;
+import com.example.movie_paradise.src.main.adapters.MovieRateAdapter;
 import com.example.movie_paradise.src.main.interfaces.MainActivityView;
 import com.example.movie_paradise.src.main.items.MovieItem;
 import com.example.movie_paradise.src.main.models.AccountTypeResponse;
 import com.example.movie_paradise.src.main.models.DefaultResponse;
+import com.example.movie_paradise.src.main.models.MovieIdResponse;
 import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
 
@@ -33,7 +35,7 @@ public class WatchedActivity extends BaseActivity implements MainActivityView {
     private Intent intent;
 
     private ArrayList<MovieItem> m_movie_item_list;
-    private MovieAdapter movie_adapter;
+    private MovieRateAdapter movie_rate_adapter;
     private RecyclerView rv_watched_movies;
     private LinearLayoutManager linear_layout_manager;
 
@@ -52,8 +54,8 @@ public class WatchedActivity extends BaseActivity implements MainActivityView {
         rv_watched_movies.setLayoutManager(linear_layout_manager);
 
         m_movie_item_list = new ArrayList<>();
-        movie_adapter = new MovieAdapter(m_movie_item_list);
-        rv_watched_movies.setAdapter(movie_adapter);
+        movie_rate_adapter = new MovieRateAdapter(m_movie_item_list);
+        rv_watched_movies.setAdapter(movie_rate_adapter);
 
 
         loadIdAndAccountNum();
@@ -166,10 +168,15 @@ public class WatchedActivity extends BaseActivity implements MainActivityView {
                         movieItem.setMovieName(movieNameResponse.getMovieNameResults().get(i).getMovieName());
                         m_movie_item_list.add(movieItem);
                     }
-                    movie_adapter.notifyDataSetChanged();
+                    movie_rate_adapter.notifyDataSetChanged();
                 }
                 break;
         }
+    }
+
+    @Override
+    public void getMovieIdByMovieNameSuccess(MovieIdResponse movieIdResponse) {
+
     }
 
     public void saveIdAndAccountNum(String id, int account_num) {

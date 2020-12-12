@@ -2,6 +2,7 @@ package com.example.movie_paradise.src.main.interfaces;
 
 import com.example.movie_paradise.src.main.models.AccountTypeResponse;
 import com.example.movie_paradise.src.main.models.DefaultResponse;
+import com.example.movie_paradise.src.main.models.MovieIdResponse;
 import com.example.movie_paradise.src.main.models.MovieNameResponse;
 import com.example.movie_paradise.src.main.models.SignInResponse;
 
@@ -56,6 +57,12 @@ public interface MainRetrofitInterface {
     // 추가 1. 내가 본 영화 조회
     @GET("/watched/{account_num}")
     Call<MovieNameResponse> getWatchedMovies(@Path("account_num") int accountNum);
+
+    // 추가 2. 영화 이름으로 movieID 조회
+    @GET("/movie_id")
+    Call<MovieIdResponse> getMovieIdByMovieName(@Query("query") String movie_name);
+
+
 
 
 

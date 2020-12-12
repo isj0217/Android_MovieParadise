@@ -34,6 +34,7 @@
         <activity android:name=".src.main.AvailableActivity" />
         <activity android:name=".src.main.SearchActivity" />
         <activity android:name=".src.main.WatchedActivity" />
+        <activity android:name=".src.main.RatingActivity" />
     </application>
 
 </manifest>
