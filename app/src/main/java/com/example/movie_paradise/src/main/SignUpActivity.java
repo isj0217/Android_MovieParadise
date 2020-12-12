@@ -162,4 +162,14 @@ public class SignUpActivity extends BaseActivity implements MainActivityView {
     public void getAvailableMoviesSuccess(MovieNameResponse movieNameResponse) {
 
     }
+
+    @Override
+    public void searchMovieByMovieTitleSuccess(MovieNameResponse movieNameResponse) {
+
+    }
+
+    @Override
+    public void searchMovieByActorNameSuccess(MovieNameResponse movieNameResponse) {
+
+    }
 }

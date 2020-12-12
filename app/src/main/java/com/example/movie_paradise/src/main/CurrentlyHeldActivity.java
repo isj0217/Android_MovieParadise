@@ -155,6 +155,16 @@ public class CurrentlyHeldActivity extends BaseActivity implements MainActivityV
 
     }
 
+    @Override
+    public void searchMovieByMovieTitleSuccess(MovieNameResponse movieNameResponse) {
+
+    }
+
+    @Override
+    public void searchMovieByActorNameSuccess(MovieNameResponse movieNameResponse) {
+
+    }
+
     public void saveIdAndAccountNum(String id, int account_num) {
         SharedPreferences sharedPreferences = getSharedPreferences("id_and_account_num", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

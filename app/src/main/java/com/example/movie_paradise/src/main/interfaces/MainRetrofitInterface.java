@@ -42,6 +42,16 @@ public interface MainRetrofitInterface {
     @GET("/available")
     Call<MovieNameResponse> getAvailableMovies(@Query("genre") String genre);
 
+    // 7. 영화 제목으로 영화 조회
+    @GET("/search")
+    Call<MovieNameResponse> searchMovieByMovieTitle(@Query("query") String movie_title);
+
+    // 8. 배우 이름으로 영화 조회
+    @GET("/search_from_actor")
+    Call<MovieNameResponse> searchMovieByActorName(@Query("query") String actor_name);
+
+
+
 
 
 

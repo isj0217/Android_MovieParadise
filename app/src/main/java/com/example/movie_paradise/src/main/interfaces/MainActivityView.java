@@ -22,4 +22,8 @@ public interface MainActivityView {
     void getAccountTypeSuccess(AccountTypeResponse accountTypeResponse);
 
     void getAvailableMoviesSuccess(MovieNameResponse movieNameResponse);
+
+    void searchMovieByMovieTitleSuccess(MovieNameResponse movieNameResponse);
+
+    void searchMovieByActorNameSuccess(MovieNameResponse movieNameResponse);
 }

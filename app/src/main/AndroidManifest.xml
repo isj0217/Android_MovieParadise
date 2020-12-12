@@ -32,6 +32,7 @@
         <activity android:name=".src.main.MovieQueueActivity" />
         <activity android:name=".src.main.AccountTypeActivity" />
         <activity android:name=".src.main.AvailableActivity" />
+        <activity android:name=".src.main.SearchActivity" />
     </application>
 
 </manifest>

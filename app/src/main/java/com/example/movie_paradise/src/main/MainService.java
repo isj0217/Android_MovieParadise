@@ -182,6 +182,57 @@ class MainService {
     }
 
 
+    // 7. 영화 제목으로 영화 검색
+    void searchMovieByMovieTitle(String movie_title) {
+        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
+        mainRetrofitInterface.searchMovieByMovieTitle(movie_title).enqueue(new Callback<MovieNameResponse>() {
+            @Override
+            public void onResponse(Call<MovieNameResponse> call, Response<MovieNameResponse> response) {
+                final MovieNameResponse movieNameResponse = response.body();
+                if (movieNameResponse == null) {
+
+                    mMainActivityView.validateFailure(null);
+                    return;
+                }
+                mMainActivityView.searchMovieByMovieTitleSuccess(movieNameResponse);
+
+
+            }
+            @Override
+            public void onFailure(Call<MovieNameResponse> call, Throwable t) {
+                mMainActivityView.validateFailure(null);
+
+            }
+        });
+    }
+
+
+    // 8. 배우 이름으로 영화 검색
+    void searchMovieByActorName(String actor_name) {
+        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
+        mainRetrofitInterface.searchMovieByActorName(actor_name).enqueue(new Callback<MovieNameResponse>() {
+            @Override
+            public void onResponse(Call<MovieNameResponse> call, Response<MovieNameResponse> response) {
+                final MovieNameResponse movieNameResponse = response.body();
+                if (movieNameResponse == null) {
+
+                    mMainActivityView.validateFailure(null);
+                    return;
+                }
+                mMainActivityView.searchMovieByActorNameSuccess(movieNameResponse);
+
+
+            }
+            @Override
+            public void onFailure(Call<MovieNameResponse> call, Throwable t) {
+                mMainActivityView.validateFailure(null);
+
+            }
+        });
+    }
+
+
+
 
 
     // 이 아래는 테스트
